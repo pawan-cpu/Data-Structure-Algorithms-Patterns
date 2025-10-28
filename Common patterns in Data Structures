@@ -1,0 +1,225 @@
+# 🧠 Data Structures & Algorithms — Patterns to Crack MAANG
+
+> A comprehensive, pattern-based guide to mastering **Data Structures & Algorithms (DSA)** with clean, optimized code examples and in-depth explanations — specifically tailored for **MAANG interviews**.
+
+---
+
+## 🚀 Overview
+
+This repository is designed to help you **recognize**, **understand**, and **apply** the most important algorithmic patterns used in top tech interviews. Instead of memorizing hundreds of problems, you’ll learn how to identify the underlying pattern behind any new question and solve it efficiently.
+
+Each pattern comes with:
+
+* 📘 **Concept explanation**
+* 💡 **When to use it**
+* 🧩 **Code templates (Python)**
+* ⚙️ **Complexity analysis**
+* 🧠 **Practice problems (LeetCode/InterviewBit references)**
+
+---
+
+## 📂 Repository Structure
+
+```bash
+├── README.md
+├── patterns/
+│   ├── sliding_window.md
+│   ├── two_pointers.md
+│   ├── fast_slow_pointers.md
+│   ├── prefix_sum.md
+│   ├── binary_search.md
+│   ├── dfs_bfs.md
+│   ├── backtracking.md
+│   ├── dynamic_programming.md
+│   ├── greedy.md
+│   ├── bit_manipulation.md
+│   ├── union_find.md
+│   └── monotonic_stack.md
+└── solutions/
+    ├── leetcode_1_two_sum.md
+    ├── leetcode_3_longest_substring.md
+    ├── leetcode_53_max_subarray.md
+    └── ...
+```
+
+Each file in `patterns/` focuses on **one pattern**, complete with explanation, use-cases, and example problems.
+
+---
+
+## 🧩 Core Patterns & Explanations
+
+### 1️⃣ Sliding Window
+
+**Concept:** Maintain a dynamic window (start to end) to track subarrays or substrings under certain constraints.
+**Use case:** Subarray sums, longest substring with K distinct characters, anagrams, etc.
+**Time Complexity:** O(n)
+
+```python
+# Example: Longest substring with K distinct characters
+def longest_k_distinct(s, k):
+    from collections import defaultdict
+    count = defaultdict(int)
+    left = 0
+    max_len = 0
+    for right, ch in enumerate(s):
+        count[ch] += 1
+        while len(count) > k:
+            count[s[left]] -= 1
+            if count[s[left]] == 0:
+                del count[s[left]]
+            left += 1
+        max_len = max(max_len, right - left + 1)
+    return max_len
+```
+
+---
+
+### 2️⃣ Two Pointers
+
+**Concept:** Use two iterators moving in opposite or same directions to efficiently compare or combine elements.
+**Use case:** Pair sums, palindrome check, removing duplicates from sorted arrays.
+**Time Complexity:** O(n)
+
+```python
+# Example: Two Sum in sorted array
+def two_sum_sorted(nums, target):
+    l, r = 0, len(nums) - 1
+    while l < r:
+        s = nums[l] + nums[r]
+        if s == target:
+            return l, r
+        elif s < target:
+            l += 1
+        else:
+            r -= 1
+    return -1, -1
+```
+
+---
+
+### 3️⃣ Fast & Slow Pointers
+
+**Concept:** Move two pointers at different speeds to detect cycles or middle elements.
+**Use case:** Cycle detection in linked lists, finding middle node.
+**Time Complexity:** O(n)
+
+---
+
+### 4️⃣ Prefix Sum
+
+**Concept:** Use cumulative sums to answer range-sum queries quickly.
+**Use case:** Subarray sum equals K, range sum queries.
+**Time Complexity:** O(n)
+
+---
+
+### 5️⃣ Binary Search / Binary Search on Answer
+
+**Concept:** Repeatedly divide the search space to find a target or optimal answer.
+**Use case:** Sorted arrays, minimizing/maximizing monotonic conditions.
+**Time Complexity:** O(log n)
+
+---
+
+### 6️⃣ DFS & BFS
+
+**Concept:** Systematically explore graphs or trees either depth-first or breadth-first.
+**Use case:** Shortest path, connected components, tree traversals.
+**Time Complexity:** O(V + E)
+
+---
+
+### 7️⃣ Backtracking
+
+**Concept:** Recursively build solutions, undo choices (backtrack) when constraints break.
+**Use case:** N-Queens, permutations, subsets, Sudoku solver.
+**Complexity:** Exponential (optimized by pruning)
+
+---
+
+### 8️⃣ Dynamic Programming
+
+**Concept:** Break problems into overlapping subproblems and store results.
+**Use case:** Fibonacci, Knapsack, Longest Common Subsequence, LIS.
+**Time Complexity:** O(n²) typical
+
+---
+
+### 9️⃣ Greedy
+
+**Concept:** Make locally optimal choices leading to global optimum.
+**Use case:** Interval scheduling, Huffman encoding, coin change.
+**Time Complexity:** O(n log n)
+
+---
+
+### 🔟 Bit Manipulation
+
+**Concept:** Optimize using bitwise operations.
+**Use case:** Single number, subset generation, parity problems.
+
+---
+
+### 11️⃣ Union-Find (Disjoint Set Union)
+
+**Concept:** Track disjoint sets efficiently using path compression and union by rank.
+**Use case:** Kruskal’s MST, cycle detection.
+**Time Complexity:** ~O(1) amortized
+
+---
+
+### 12️⃣ Monotonic Stack
+
+**Concept:** Maintain elements in increasing/decreasing order for efficient range queries.
+**Use case:** Next greater element, histogram area.
+**Time Complexity:** O(n)
+
+---
+
+## 💡 Interview Tips
+
+✅ Identify the **pattern** before you start coding
+✅ Clarify input constraints & edge cases early
+✅ Communicate your thought process clearly
+✅ Optimize iteratively — start from brute force
+✅ Always explain **time and space complexity**
+
+---
+
+## 🧰 Tech Stack
+
+* Programming Language: **Python (default)**
+* Future Support: **C++**, **Java**, **JavaScript**
+* Testing: Example-driven and self-documented
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! You can:
+
+* Add new patterns or solutions
+* Provide implementations in other languages
+* Improve explanations or add problem mappings
+
+Steps to contribute:
+
+1. Fork this repository
+2. Create a new branch: `feature/new-pattern`
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## 📜 License
+
+This repository is licensed under the **MIT License**. You are free to use, modify, and distribute it with attribution.
+
+---
+
+## 👨‍💻 Author
+
+**Pawan Kumar**
+[LinkedIn](https://www.linkedin.com/in/pawankhustlerdev/)  |  [GitHub](https://github.com/pawankhustlerdev)
+
+> Master patterns. Crack interviews. Build confidence.
